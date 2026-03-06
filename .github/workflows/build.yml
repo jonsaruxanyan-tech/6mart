@@ -1,0 +1,29 @@
+name: Build C++ Hello World
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+  # schedule:
+  #   - cron: '5 * * * *'
+  issues:
+    types: [opened, closed]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Install g++
+      run: sudo apt-get update && sudo apt-get install -y g++
+
+    - name: Compile some.cpp
+      run: g++ -std=c++17 some.cpp -o some
+
+    - name: Run executable
+      run: ./some  
