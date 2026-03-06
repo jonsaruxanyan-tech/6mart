@@ -6,11 +6,16 @@ on:
   pull_request:
     branches: [ "main" ]
   workflow_dispatch:
-  # schedule:
-  #   - cron: '5 * * * *'
-  issues:
-    types: [opened, closed]
-
+    inputs:
+      file_name:
+        description: "input file name"
+        required: true
+        default: "b.cpp"
+        type: choice
+        options:
+          - a.cpp
+          - b.cpp
+          - c.cpp
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -23,7 +28,7 @@ jobs:
       run: sudo apt-get update && sudo apt-get install -y g++
 
     - name: Compile a.cpp
-      run: g++ -std=c++17 a.cpp -o a
+      run: g++ -std=c++17 ${{ github.event.inputs.file_name }} -o a
 
     - name: Run executable
       run: ./a  
