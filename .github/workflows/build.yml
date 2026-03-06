@@ -22,8 +22,8 @@ jobs:
     - name: Install g++
       run: sudo apt-get update && sudo apt-get install -y g++
 
-    - name: Compile some.cpp
-      run: g++ -std=c++17 some.cpp -o some
+    - name: Compile a.cpp
+      run: g++ -std=c++17 a.cpp -o a
 
     - name: Run executable
-      run: ./some  
+      run: ./a  
