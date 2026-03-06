@@ -28,7 +28,7 @@ jobs:
       run: sudo apt-get update && sudo apt-get install -y g++
 
     - name: Compile 
-      run: g++ -std=c++17 ${{ github.event.inputs.file_name }} -o a
+      run: g++ -std=c++17 ${{ inputs.file_name }} -o a
 
     - name: Run executable
       run: ./a  
