@@ -18,6 +18,17 @@ on:
           - c.cpp
 jobs:
   build:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest, ubuntu-24.04]
+
+    steps:
+      - name: Print OS
+        run: echo "Running on ${{ matrix.os }}"
+        
+  cpp-build:
     runs-on: ubuntu-latest
 
     steps:
